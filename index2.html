@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>⚠️ جهازك في خطر ⚠️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: black;
+      color: #00FF00;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      overflow: hidden;
+      padding-top: 50px;
+    }
+
+    h1.glitch {
+      font-size: 28px;
+      animation: glitch 1s infinite;
+      color: red;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #00ff00, -2px -2px red; }
+      20% { text-shadow: -2px -2px #00ff00, 2px 2px red; }
+      40% { text-shadow: 2px -2px #00ff00, -2px 2px red; }
+      60% { text-shadow: 0px 0px red; }
+      80% { text-shadow: -2px 2px #00ff00, 2px -2px red; }
+      100% { text-shadow: 2px 2px #00ff00, -2px -2px red; }
+    }
+
+    .data-line {
+      font-size: 16px;
+      margin: 20px 0;
+      color: #ff0000;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0px, 0px) rotate(0deg); }
+      25% { transform: translate(2px, -2px) rotate(1deg); }
+      50% { transform: translate(-2px, 2px) rotate(-1deg); }
+      75% { transform: translate(2px, 2px) rotate(1deg); }
+      100% { transform: translate(-2px, -2px) rotate(-1deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="siren" autoplay loop>
+    <source src="https://www.soundjay.com/button/sounds/beep-10.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1 class="glitch">🚨🚨 نظامك تم السيطرة عليه 🚨🚨</h1>
+  <p class="data-line" id="dataText">جارٍ الاتصال بالسيرفر...</p>
+
+  <script>
+    const dataSteps = [
+      "🛑 تحميل ملفات النظام...",
+      "🛑 الوصول إلى الشبكة الداخلية...",
+      "🛑 تحليل بيانات المتصفح...",
+      "🛑 فتح ميكروفون الجهاز...",
+      "🛑 تسجيل الشاشة الآن...",
+      "🛑 رفع جميع البيانات للسيرفر...",
+      "🛑 اختراق البريد الإلكتروني...",
+      "🛑 التحكم الكامل بالجهاز تم بنجاح ✅"
+    ];
+    let i = 0;
+
+    setInterval(() => {
+      document.body.style.animation = 'shake 0.5s';
+      setTimeout(() => {
+        document.body.style.animation = '';
+      }, 500);
+
+      document.getElementById('dataText').textContent = dataSteps[i];
+      i = (i + 1) % dataSteps.length;
+    }, 1000); // كل ثانية
+
+    setTimeout(() => {
+      alert("⚠️ كل بياناتك تم سحبها بنجاح!\nالهاتف الآن تحت المراقبة المستمرة 📡");
+    }, 4000);
+
+    setTimeout(() => {
+      confirm("🚨 هل تريد محاولة استعادة السيطرة؟\n(لن تنجح ❌)");
+    }, 7000);
+  </script>
+
+</body>
+</html>
